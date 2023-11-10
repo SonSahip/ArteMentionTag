@@ -4,19 +4,25 @@ from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 from telethon.tl.types import ChannelParticipantsAdmins
 import os
+from telethon import TelegramClient
 logging.basicConfig(
     level=logging.INFO,
     format='%(name)s - [%(levelname)s] - %(message)s'
 )
 LOGGER = logging.getLogger(__name__)
 
-api_id_str = os.environ.get("2628325")
 
-if api_id_str is not None:
-    api_id = int(api_id_str)
+
+api_id = int(os.environ.get("2628325"))
 api_hash = os.environ.get("7399c5c7d8a012968f38edd6c7edbd94")
 bot_token = os.environ.get("5295203481:AAEF2Xqyi2H1IZdCQ10dDF9_Nqukr5me90E")
-client = TelegramClient('client', api_id, api_hash).start(bot_token=bot_token)
+
+client = TelegramClient('client', api_id, api_hash)
+client.start()
+
+# Bot hesabını başlatmak istiyorsanız:
+# client = TelegramClient('client', api_id, api_hash).start(bot_token=bot_token)
+
 
 emoji_calisan = []
 
